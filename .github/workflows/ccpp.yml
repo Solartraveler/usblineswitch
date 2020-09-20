@@ -1,0 +1,25 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: debian-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y libusb-1.0-0-dev g++ make
+    - name: make
+      run: make -C src
+    - name: Artifacts upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: Binary-for-linux
+        path: |
+          src/lineonoff
+          LICENSE
+
