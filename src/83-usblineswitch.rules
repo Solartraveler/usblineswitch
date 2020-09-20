@@ -1,0 +1,3 @@
+# USB line switch
+ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="2823", MODE="0666"
+
