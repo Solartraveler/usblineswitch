@@ -32,7 +32,7 @@ buying under:
 http://www.reusch-elektronik.de/index_de_uls.htm
 
 For proper compiling under Debian 10:
-apt install libusb-1.0-0-dev g++ make
+apt install libusb-1.0 libusb-1.0-0-dev g++ make
 
 Restrictions:
 This works only with one device connected. If multiple are present, the first
