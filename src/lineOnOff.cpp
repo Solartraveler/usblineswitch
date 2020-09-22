@@ -123,7 +123,7 @@ int main(int argc, char ** argv) {
 			}
 		}
 	} else {
-		printf("Error: No device connected, or not enough permissions! Have you added a proper udev rule or tried as root?\n");
+		printf("Error: No device connected, or not enough permissions! Have you added a proper udev rule (and then replugged the device) or tried as root?\n");
 		exitCode = -1;
 	}
 	libusb_exit(plc);

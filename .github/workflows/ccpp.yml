@@ -24,7 +24,7 @@ jobs:
       with:
         name: Binary-for-linux
         path: |
-          src/lineonoff
+          src/usblineonoff
           LICENSE
           *.deb
 
