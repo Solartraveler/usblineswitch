@@ -2,7 +2,7 @@ CC=g++
 BINARY=usblineonoff
 PACKAGEDIR=../packages
 CONTROLFILE=$(PACKAGEDIR)/DEBIAN/control
-VERSION=1.0
+VERSION=1.0.1
 
 all:
 	$(CC) -O2 -Wall -Wextra -D_VERSION_=\"$(VERSION)\" lineOnOff.cpp -lusb-1.0 -o $(BINARY)
@@ -32,7 +32,7 @@ deb: $(BINARY)
 	echo "Description: Program for controling one USB line switch device" >> $(CONTROLFILE)
 	echo "Depends: libusb-1.0-0" >> $(CONTROLFILE)
 	echo "Build-Depends: libusb-1.0-0, libusb-1.0-0-dev, g++ make" >> $(CONTROLFILE)
-	dpkg-deb --build $(PACKAGEDIR) ../$(BINARY)_$(VERSION)_$(ARCHITECTURE).deb
+	dpkg-deb --root-owner-group --build $(PACKAGEDIR) ../$(BINARY)_$(VERSION)_$(ARCHITECTURE).deb
 
 clean:
 	rm -f $(BINARY)
