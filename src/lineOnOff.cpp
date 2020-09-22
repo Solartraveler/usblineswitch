@@ -32,7 +32,7 @@ buying under:
 http://www.reusch-elektronik.de/index_de_uls.htm
 
 For proper compiling under Debian 10:
-apt install libusb-1.0 libusb-1.0-0-dev g++ make
+apt install libusb-1.0-0 libusb-1.0-0-dev g++ make
 
 Restrictions:
 This works only with one device connected. If multiple are present, the first
@@ -59,7 +59,7 @@ int main(int argc, char ** argv) {
 		argument = argv[1];
 		if ((strcmp(argument, "on")) && (strcmp(argument, "off")))
 		{
-			printf("LineOnOff version 1.0 (c) 2020 by Malte Marwedel\n");
+			printf("LineOnOff version " _VERSION_ " (c) 2020 by Malte Marwedel\n");
 			printf("Usage: \n");
 			printf("No arguments: Prints the current USB line switch status\n");
 			printf("         off: Powers off the switch\n");
@@ -98,7 +98,7 @@ int main(int argc, char ** argv) {
 			if (status >= 0) { //we dont expect any bytes to return
 				//printf("New state written\n");
 			} else {
-				printf("Error: Write control failed with error code %i\n", status);
+				printf("Error: In control for setting status failed with error code %i\n", status);
 				exitCode = -1;
 			}
 		}
@@ -111,7 +111,7 @@ int main(int argc, char ** argv) {
 		if (status > 0) { //we want at least one byt
 			printf("The current state is %s\n", data[0] & 1 ? "on" : "off");
 		} else {
-			printf("Error: Read control failed with error code %i\n", status);
+			printf("Error: In control for getting failed with error code %i\n", status);
 			exitCode = -1;
 		}
 		libusb_close(pldh);
@@ -119,7 +119,7 @@ int main(int argc, char ** argv) {
 		if (argument) {
 			if (data[0] != requested) {
 				printf("Error, written and read back state do not match!\n");
-				exitCode = 2;
+				exitCode = -2;
 			}
 		}
 	} else {

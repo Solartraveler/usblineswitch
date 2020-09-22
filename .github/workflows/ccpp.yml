@@ -15,6 +15,10 @@ jobs:
         sudo apt install -y libusb-1.0 libusb-1.0-0-dev  g++ make
     - name: make
       run: make -C src
+    - name: debianpackage
+      run: make -C src deb
+    - name: install
+      run: sudo apt install -y ./*.deb
     - name: Artifacts upload
       uses: actions/upload-artifact@v2
       with:
@@ -22,4 +26,5 @@ jobs:
         path: |
           src/lineonoff
           LICENSE
+          *.deb
 

@@ -3,6 +3,8 @@ Minimalistic linux control program for usb line switch, available from
 
 http://www.reusch-elektronik.de/index_de_uls.htm
 
+Currently, only one connected device is supported.
+
 For using as non-root user, copy the 83-usblineswitch.rules to /etc/udev/rules.d/
 then run
 
@@ -10,7 +12,17 @@ udevadm control --reload-rules
 
 and then remove and replug the USB device.
 
-Install dependencies by sudo apt install libusb-1.0 libusb-1.0-0-dev g++ make
+Install dependencies by sudo apt install libusb-1.0-0 libusb-1.0-0-dev g++ make
 
-Then run make and run ./lineonoff --help to see how to use the progam.
+Then run make and run ./usblineonoff --help to see how to use the progam.
+
+Instead of manually copying the udev rule and run udevadm, you can call
+
+make deb
+
+to create a debian packet and install it with
+
+apt install ./usblineonoff_1.0_amd64.deb
+
+Then just unplug and replug the USB device.
 
