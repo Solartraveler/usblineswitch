@@ -1,16 +1,16 @@
 # usblineswitch
 Minimalistic linux control program for usb line switch, available from
 
-http://www.reusch-elektronik.de/index_de_uls.htm
+http://www.reusch-elektronik.de/re/de/produkte/uls/index.htm
 
 Currently, only one connected device is supported.
 
 For using as non-root user, copy the 83-usblineswitch.rules to /etc/udev/rules.d/
 then run
 
-udevadm control --reload-rules
+sudo udevadm control --reload-rules
 
-and then remove and replug the USB device.
+and then remove and replug the USB device or run sudo udevadm trigger --subsystem-match=usb
 
 Install dependencies by sudo apt install libusb-1.0-0 libusb-1.0-0-dev g++ make
 
@@ -22,7 +22,7 @@ make deb
 
 to create a debian packet and install it with
 
-apt install ./usblineonoff_1.0_amd64.deb
+sudo apt install ./usblineonoff_1.0_amd64.deb
 
-Then just unplug and replug the USB device.
+Then just unplug and replug the USB device or run sudo udevadm trigger --subsystem-match=usb
 

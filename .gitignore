@@ -1,0 +1,6 @@
+*~
+*.deb
+src/usblineonoff
+packages/DEBIAN/control
+packages/etc/*
+packages/usr/*
