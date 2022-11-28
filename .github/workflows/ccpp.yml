@@ -12,7 +12,7 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt update
-        sudo apt install -y libusb-1.0 libusb-1.0-0-dev  g++ make
+        sudo apt install -y libusb-1.0-0 libusb-1.0-0-dev  g++ make
     - name: make
       run: make -C src
     - name: debianpackage
